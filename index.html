@@ -605,8 +605,8 @@ function connect(apiKey) {
     // Show first few raw messages for debugging
     if (msgCount <= 3) dbg('MSG #' + msgCount + ': ' + JSON.stringify(msg).slice(0,120));
 
-    const mt = msg.MessageType;
-    const mp = msg.Message;
+    const mt = msg?.MessageType || msg?.messageType;
+    const mp = msg?.Message || msg?.message;
     const meta = msg.MetaData || {};
 
     if (mt === 'PositionReport') {
